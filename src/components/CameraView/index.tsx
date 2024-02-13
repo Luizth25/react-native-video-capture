@@ -6,16 +6,21 @@ import { TCameraViewProps } from "./types";
 import { Camera } from "expo-camera";
 
 const CameraView = ({
-  ref,
+  cameraRef,
   isRecording,
   onRecord,
   onStopRecord,
 }: TCameraViewProps) => {
   return (
-    <Camera>
-      <View>
-        <TouchableOpacity>
-          <Text>Record Video</Text>
+    <Camera style={styles.container} ref={cameraRef}>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.buttonRecord}
+          onPress={isRecording ? onStopRecord : onRecord}
+        >
+          <Text style={styles.buttonText}>
+            {isRecording ? "Stop Recording" : "Start Recording"}
+          </Text>
         </TouchableOpacity>
       </View>
     </Camera>

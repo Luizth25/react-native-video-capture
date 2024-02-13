@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <CameraView
-      ref={cameraRef}
+      cameraRef={cameraRef}
       isRecording={isRecording}
       onRecord={recordVideo}
       onStopRecord={stopRecord}
