@@ -1,10 +1,12 @@
 import React from "react";
-import { Button, SafeAreaView, Text, View } from "react-native";
+import { SafeAreaView, TouchableOpacity, View } from "react-native";
 
-import { Video, Audio } from "expo-av";
+import { Video } from "expo-av";
 
 import { styles } from "./styles";
 import { TVideoPlayProps } from "./types";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const VideoPlayer = ({
   onDiscard,
@@ -21,9 +23,15 @@ const VideoPlayer = ({
         isLooping
       />
       <View style={styles.menuButton}>
-        <Button title="Share" onPress={onShare} />
-        <Button title="Save" onPress={onSave} />
-        <Button title="Discard" onPress={onDiscard} />
+        <TouchableOpacity onPress={onSave}>
+          <MaterialCommunityIcons name="content-save" size={40} color="#000" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onShare}>
+          <MaterialCommunityIcons name="share-variant" size={40} color="#000" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onDiscard}>
+          <MaterialCommunityIcons name="trash-can" size={40} color="#000" />
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );

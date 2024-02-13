@@ -1,9 +1,11 @@
 import React from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 
 import { styles } from "./styles";
 import { TCameraViewProps } from "./types";
 import { Camera } from "expo-camera";
+
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const CameraView = ({
   cameraRef,
@@ -18,9 +20,11 @@ const CameraView = ({
           style={styles.buttonRecord}
           onPress={isRecording ? onStopRecord : onRecord}
         >
-          <Text style={styles.buttonText}>
-            {isRecording ? "Stop Recording" : "Start Recording"}
-          </Text>
+          {isRecording ? (
+            <MaterialCommunityIcons name="stop" size={40} color="#ff0000" />
+          ) : (
+            <MaterialCommunityIcons name="record" size={40} color="#000" />
+          )}
         </TouchableOpacity>
       </View>
     </Camera>

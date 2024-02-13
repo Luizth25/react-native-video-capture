@@ -12,5 +12,7 @@ export const styles = StyleSheet.create({
   },
   menuButton: {
     flexDirection: "row",
+    gap: 16,
+    marginBottom: 20,
   },
 });

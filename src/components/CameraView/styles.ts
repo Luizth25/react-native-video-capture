@@ -4,15 +4,16 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
   },
   buttonContainer: {
-    alignSelf: "flex-end",
+    alignSelf: "center",
+    marginBottom: 20,
   },
   buttonRecord: {
     backgroundColor: "#fff",
     padding: 8,
-    borderRadius: 4,
+    borderRadius: 12,
   },
   buttonText: {
     color: "#000",
