@@ -7,6 +7,35 @@ import { shareAsync } from "expo-sharing";
 import * as MediaLibrary from "expo-media-library";
 
 export default function App() {
+  const [hasCameraPermission, setHasCameraPermission] =
+    useState<boolean>(false);
+  const [hasMicrophonePermission, setHasMicrophonePermission] =
+    useState<boolean>(false);
+  const [hasMediaLibraryPermission, setHasMediaLibraryPermission] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    (async () => {
+      const cameraPermission = await Camera.requestCameraPermissionsAsync();
+      const microphonePermission =
+        await Camera.requestMicrophonePermissionsAsync();
+      const mediaLibraryPermission =
+        await MediaLibrary.requestPermissionsAsync();
+
+      setHasCameraPermission(cameraPermission.status === "granted");
+      setHasMicrophonePermission(microphonePermission.status === "granted");
+      setHasMediaLibraryPermission(mediaLibraryPermission.status === "granted");
+    })();
+  }, []);
+
+  if (hasCameraPermission === false || hasMicrophonePermission === false) {
+    return <Text>Não tem permissão de camera ou audio</Text>;
+  }
+
+  if (hasMediaLibraryPermission === false) {
+    return <Text>Não tem acesso a bibliotecas</Text>;
+  }
+
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
