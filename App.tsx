@@ -60,7 +60,12 @@ export default function App() {
     }
   };
 
-  const stopRecord = () => {};
+  const stopRecord = () => {
+    setIsRecording(false);
+    if (cameraRef && cameraRef.current) {
+      cameraRef.current.stopRecording();
+    }
+  };
 
   return (
     <CameraView
