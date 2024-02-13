@@ -1,14 +1,24 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import { styles } from "./styles";
 import { TCameraViewProps } from "./types";
+import { Camera } from "expo-camera";
 
-const CameraView = () => {
+const CameraView = ({
+  ref,
+  isRecording,
+  onRecord,
+  onStopRecord,
+}: TCameraViewProps) => {
   return (
-    <View style={styles.container}>
-      <Text>Camera Works</Text>
-    </View>
+    <Camera>
+      <View>
+        <TouchableOpacity>
+          <Text>Record Video</Text>
+        </TouchableOpacity>
+      </View>
+    </Camera>
   );
 };
 
