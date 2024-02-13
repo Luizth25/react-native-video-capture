@@ -13,9 +13,14 @@ const VideoPlayer = ({
   video,
 }: TVideoPlayProps) => {
   return (
-    <SafeAreaView>
-      <Video source={{ uri: video.uri }} useNativeControls isLooping />
-      <View>
+    <SafeAreaView style={styles.container}>
+      <Video
+        style={styles.video}
+        source={{ uri: video.uri }}
+        useNativeControls
+        isLooping
+      />
+      <View style={styles.menuButton}>
         <Button title="Share" onPress={onShare} />
         <Button title="Save" onPress={onSave} />
         <Button title="Discard" onPress={onDiscard} />
